@@ -1,0 +1,27 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "position: sticky",
+          "user-select",
+          "scroll-margin"
+        ]
+      }
+    ],
+    "compat-api/html": [
+      "default",
+      {
+        "ignore": [
+          "link[referrerpolicy]",
+          "script[referrerpolicy]",
+          "meta[name=theme-color]"
+        ]
+      }
+    ]
+  }
+}
