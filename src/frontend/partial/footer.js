@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <>
@@ -21,55 +23,55 @@ function Footer() {
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               <h6 class=" fw-bold mb-4">CHÍNH SÁCH</h6>
               <p>
-                <a>Chính sách thành viên</a>
+                <Link className="text-none" to="">Chính sách thành viên</Link>
               </p>
               <p>
-                <a>Chính sách vận chuyển</a>
+                <Link to="">Chính sách vận chuyển</Link>
               </p>
               <p>
-                <a>Chăm sóc khách hàng</a>
+                <Link to="">Chăm sóc khách hàng</Link>
               </p>
               <p>
-                <a>Phương thức thanh toán</a>
+                <Link to="">Phương thức thanh toán</Link>
               </p>
               <p>
-                <a>Chính sách đổi trả / bảo hành</a>
+                <Link to="">Chính sách đổi trả / bảo hành</Link>
               </p>
             </div>
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               <h6 class="fw-bold mb-4">HƯỚNG DẪN</h6>
               <p>
-                <a>Denny Member</a>
+                <Link to="">Denny Member</Link>
               </p>
               <p>
-                <a>Mua hàng dễ dàng</a>
+                <Link to="">Mua hàng dễ dàng</Link>
               </p>
               <p>
-                <a>Hợp tác nhượng quyền</a>
+                <Link to="">Hợp tác nhượng quyền</Link>
               </p>
               <p>
-                <a>Hướng dẫn mua hàng online</a>
+                <Link to="">Hướng dẫn mua hàng online</Link>
               </p>
               <p>
-                <a>Hướng dẫn kiểm tra hạng thẻ thành viên</a>
+                <Link to="">Hướng dẫn kiểm tra hạng thẻ thành viên</Link>
               </p>
             </div>
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               <h6 class=" fw-bold mb-4">HƯỚNG DẪN</h6>
               <p>
-                <a>Denny Member</a>
+                <Link to="">Denny Member</Link>
               </p>
               <p>
-                <a>Mua hàng dễ dàng</a>
+                <Link to="">Mua hàng dễ dàng</Link>
               </p>
               <p>
-                <a>Hợp tác nhượng quyền</a>
+                <Link to="">Hợp tác nhượng quyền</Link>
               </p>
               <p>
-                <a>Hướng dẫn mua hàng online</a>
+                <Link to="">Hướng dẫn mua hàng online</Link>
               </p>
               <p>
-                <a>Hướng dẫn kiểm tra hạng thẻ thành viên</a>
+                <Link to="">Hướng dẫn kiểm tra hạng thẻ thành viên</Link>
               </p>
             </div>
           </div>

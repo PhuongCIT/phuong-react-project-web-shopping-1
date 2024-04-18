@@ -16,7 +16,7 @@ function Cart(){
 
     console.log("getDataCart: ", getDataCart);
     return(
-        <div>
+        <div className="table table-bordered">
             <h1>Giỏ Hàng</h1>
             <table className="table table-bordered">
                 <tr>

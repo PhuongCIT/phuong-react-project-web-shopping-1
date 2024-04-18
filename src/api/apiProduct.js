@@ -25,12 +25,22 @@ const apiProduct = {
       .get(`/products?filters[slug][$eq]=${slug}&populate=*`)
       .then((res) => res.data);
   },
+// lấy sản phẩm theo  brand
+  getProductByBrandSlug: (slug)=>{
+    return axiosInstance.get(`/products?filters[brand][slug][$eq]=${slug}&populate=*`).then((res)=> res.data);
+
+  },
   //lấy sản phẩm theo danh mục
   getProductByCatSlug: (slug) => {
     return axiosInstance
       .get(`/products?filters[category][slug][$eq]=${slug}&populate=*`)
       .then((res) => res.data);
   },
+  //lấy sản phẩm theo id
+  getProductById: (id) => {
+    return axiosInstance.get(`/products/${id}`).then((res) => res.data);
+  },
+
   //lấy sản phẩm phân trang
   getProductPagination: (page, limit) => {
     return axiosInstance
@@ -45,13 +55,13 @@ const apiProduct = {
   },
 
   //sửa 1 sản phẩm
-  editProduct: (slug) => {
-    return axiosInstance.put(`/products/${slug}`);
+  updateProduct: (id, data) => {
+    return axiosInstance.put(`/products/${id}`, data);
   },
 
   //xóa 1 sản phẩm
-  delProductBySlug: (slug) => {
-    return axiosInstance.delete(`/products/${slug}`);
+  delProductById: (id) => {
+    return axiosInstance.delete(`/products/${id}`);
   },
 };
 

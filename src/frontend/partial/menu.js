@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import apiCategory from "../../api/apiCategory";
 import UserContext from "../context/userContext";
 
@@ -25,68 +25,102 @@ function Menu() {
     });
   }, []);
   return (
-    <div className="row header">
-      <div className="col-md-12 ">
-        <ul>
-          <li className="active">
-            <Link to="/">Trang chủ</Link>
-          </li>
-          <li>
-            <a href="/products">SHOP</a>
-            <ul>
-              {subMenu.map((submenu, index) => {
-                return submenu.parent === 0 ? (
-                  <li
-                    key={index}
-                    className="parent-id">
-                    <Link to={`/products-by-cat/${submenu.slug}`}>
-                      {submenu.name}
-                    </Link>
-                    <ul>
-                      {subMenu.map((sub, index) => {
-                        return sub.parent === submenu.id ? (
-                          <li
-                            key={index}
-                            className="parent-child-id">
-                            <Link to={`/products-by-cat/${sub.slug}`}>
-                              {sub.name}
-                            </Link>
-                          </li>
-                        ) : null
-                      })}
-                    </ul>
-                  </li>
-                ) : null
-              })}
-            </ul>
-          </li>
-
-          <li>
-            <Link to="/blog">Blog</Link>
-          </li>
-          <li>
-            <Link to="/contact">Liên hệ</Link>
-          </li>
-          <li>
-            <Link to="/register">Đăng ký</Link>
-          </li>
-
-          {user ? (
-            <li>
-              <Link to="/logout">Đăng Xuất</Link>
+      <nav className="navbar navbar-expand-md bg-dark navbar-dark  ">
+        <div className="container-fluid justify-content-center ">
+          <ul className="navbar-nav header">
+            <li className="nav-item ">
+              <a
+                href="/"
+                className="nav-link ">
+                Trang chủ
+              </a>
             </li>
-          ) : (
-            <li>
-              <Link to="/login">Đăng nhập</Link>
+            <li className="nav-item nav-link  dropdown ">
+              <a
+                href="/products"
+                className="dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown">
+                SHOP
+              </a>
+              <ul className="dropdown-menu">
+                {subMenu.map((submenu, index) => {
+                  return submenu.parent === 0 ? (
+                    <li
+                      key={index}
+                      className="dropdown-item">
+                      <a href={`/products-by-cat/${submenu.slug}`}>
+                        {submenu.name}
+                      </a>
+                      <ul className="dropdown-menu">
+                        {subMenu.map((sub, index) => {
+                          return sub.parent === submenu.id ? (
+                            <li
+                              className="dropdown-item"
+                              key={index}>
+                              <a href={`/products-by-cat/${sub.slug}`}>
+                                {sub.name}
+                              </a>
+                            </li>
+                          ) : null;
+                        })}
+                      </ul>
+                    </li>
+                  ) : null;
+                })}
+              </ul>
             </li>
-          )}
 
-          <li>
-            <Link to="/account">Tài khoản</Link>
-          </li>
-        </ul>
-      </div>
-    </div>
+            <li>
+              <a
+                href="/blog"
+                className="nav-item nav-link ">
+                Blog
+              </a>
+            </li>
+            <li>
+              <a
+                href="/contact"
+                className="nav-item nav-link ">
+                Liên hệ
+              </a>
+            </li>
+            <li>
+              <a
+                href="/register"
+                className="nav-item nav-link ">
+                Đăng ký
+              </a>
+            </li>
+
+            {user ? (
+              <li>
+                <a
+                  href="/logout"
+                  className="nav-item nav-link ">
+                  Đăng Xuất
+                </a>
+              </li>
+            ) : (
+              <li>
+                <a
+                  href="/login"
+                  className="nav-item nav-link ">
+                  Đăng nhập
+                </a>
+              </li>
+            )}
+
+            <li>
+              <a
+                href="/account"
+                className="nav-item nav-link ">
+                Tài khoản
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
   );
 }
 export default Menu;

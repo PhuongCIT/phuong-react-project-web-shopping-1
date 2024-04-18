@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function CategoryAdd() {
   const [catName, setCatName] = useState("");
-  const [parentID, setParentID] = useState("");
+  const [parentId, setParentId] = useState("");
   const [slug, setSlug] = useState("");
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ function CategoryAdd() {
     e.preventDefault();
     const category = {
       category_name: catName,
-      parent_id: parseInt(parentID),
+      parent_id: parseInt(parentId),
       slug: slug,
     };
     console.log(category);
@@ -64,8 +64,8 @@ function CategoryAdd() {
           <select
             className="form-control"
             name="parent_id"
-            value={parentID}
-            onChange={(e) => setParentID(e.target.value)}>
+            value={parentId}
+            onChange={(e) => setParentId(e.target.value)}>
             <option value="0">không có danh mục cha</option>
             {categories.map((item, index) => {
               return (

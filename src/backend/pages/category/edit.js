@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 function CategoryEdit() {
   const { id } = useParams();
   const [catName, setCatName] = useState("");
-  const [parentID, setParentID] = useState("");
+  const [parentId, setParentId] = useState("");
   const [slug, setSlug] = useState("");
   const [status, setStatus] = useState("0");
   const [categories, setCategories] = useState([]);
@@ -13,10 +13,10 @@ function CategoryEdit() {
   useEffect(() => {
     apiCategory.getCategoryById(id).then((res) => {
       try {
-        console.log(res);
+        // console.log(res);
         const categoryData = res.data.data.attributes;
         setCatName(categoryData.category_name);
-        setParentID(categoryData.parent_id);
+        setParentId(categoryData.parent_id);
         setSlug(categoryData.slug);
         setStatus(categoryData.status);
       } catch (e) {
@@ -46,14 +46,14 @@ function CategoryEdit() {
     e.preventDefault();
     const category = {
       category_name: catName,
-      parent_id: parseInt(parentID),
+      parent_id: parseInt(parentId),
       slug: slug,
       status: status,
     };
     console.log(category);
     try {
       const response = await apiCategory.editCategory(id, { data: category });
-      //console.log(response);
+      console.log(response);
       alert("Sửa thành công");
       navigate("/admin/category");
     } catch (error) {
@@ -80,8 +80,8 @@ function CategoryEdit() {
           <select
             className="form-control"
             name="parent_id"
-            value={parentID}
-            onChange={(e) => setParentID(e.target.value)}>
+            value={parentId}
+            onChange={(e) => setParentId(e.target.value)}>
             <option value="0">không có danh mục cha</option>
             {categories.map((item, index) => {
               return (
@@ -105,7 +105,7 @@ function CategoryEdit() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="slug">Status</label>
+          <label htmlFor="status">Status</label>
           <select
             className="form-control"
             name="status"
@@ -117,8 +117,8 @@ function CategoryEdit() {
         </div>
         <button
           type="submit"
-          className="btn btn-primary">
-          Sửa
+          className="btn btn-primary mt-3">
+          Update
         </button>
       </form>
     </div>

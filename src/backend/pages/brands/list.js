@@ -1,35 +1,34 @@
 import { useEffect, useState } from "react";
-import apiCategory from "../../../api/apiCategory";
 import { Link } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import apiBrand from "../../../api/apiBrand";
 
-function CategoryList() {
-  const [categories, setCategories] = useState([]);
-  const [delCategoryItem, setDelCategoryItem] = useState(false);
-
+function BrandList() {
+  const [brands, setBrands] = useState([]);
+  const [delBrandItem, setDelBrandItem] = useState(false);
   useEffect(() => {
-    apiCategory.getAll().then((res) => {
+    apiBrand.getAll().then((res) => {
       try {
-        const categoryData = res.data.map((item) => {
+        const brandData = res.data.map((item) => {
           return {
             id: item.id,
-            name: item.attributes.category_name,
-            parent_id: item.attributes.parent_id,
+            name: item.attributes.brand_name,
             slug: item.attributes.slug,
+            address: item.attributes.address,
           };
         });
-        setCategories(categoryData);
+        setBrands(brandData);
       } catch (e) {
         console.log(e);
       }
     });
-  }, [delCategoryItem]);
-  const delCategory = async (id) => {
-    apiCategory.delCategoryById(id).then((res) => {
+  }, [delBrandItem]);
+  const delBrand = async (id) => {
+    apiBrand.delBrandById(id).then((res) => {
       try {
         alert("Xóa thành công");
-        setDelCategoryItem(id);
+        setDelBrandItem(id);
       } catch (e) {
         console.log(e);
       }
@@ -38,48 +37,42 @@ function CategoryList() {
 
   return (
     <div style={{ width: "100%", margin: "auto" }}>
-      <h1>Danh sách danh mục</h1>
+      <h1>Danh sách Thương hiệu</h1>
       <div className="from-group mb-4">
         <Link
-          to="/admin/addCategory"
+          to="/admin/addBrand"
           className="btn btn-primary">
-          Thêm danh mục
+          Thêm Thương hiệu
         </Link>
       </div>
       <table className="table table-striped table-bordered">
         <tr>
           <th>ID</th>
-          <th>Danh mục</th>
-          <th>Danh mục cha</th>
+          <th>Tên Thương hiệu</th>
           <th>Slug</th>
+          <th>Address</th>
           <th>Hành động</th>
         </tr>
-        {categories.map((item, index) => {
+        {brands.map((item, index) => {
           return (
             <tr key={index}>
               <td>{item.id}</td>
               <td>{item.name}</td>
-              <td>
-                {categories.map((catagory) => {
-                  if (catagory.id === item.parent_id) {
-                    return catagory.name;
-                  }
-                })}
-              </td>
               <td>{item.slug}</td>
+              <td>{item.address}</td>
               <td>
                 
                 <button>
                   <Link
                     className="btn btn-success"
-                    to={`/admin/editCategory/${item.id}`}>
+                    to={`/admin/editBrand/${item.id}`}>
                     Sửa <FaEdit />
                   </Link>
                 </button>
                 <button>
                   <Link
                     className="btn btn-danger"
-                    onClick={() => delCategory(item.id)}>
+                    onClick={() => delBrand(item.id)}>
                     Xóa <MdDelete />
                   </Link>
                 </button>
@@ -92,4 +85,4 @@ function CategoryList() {
   );
 }
 
-export default CategoryList;
+export default BrandList;

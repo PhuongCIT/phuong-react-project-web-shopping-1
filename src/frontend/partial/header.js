@@ -27,7 +27,7 @@ function Header() {
         </div>
         
         <div className="col-md-4 text-end pt-3">
-            <a href="" className="btn border">
+            <a href="/#" className="btn border">
                 <i className="fas fa-heart text-success"></i>
                 <span className="badge text-black">{username}</span>
             </a>

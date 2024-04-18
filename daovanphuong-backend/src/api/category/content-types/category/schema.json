@@ -4,8 +4,7 @@
   "info": {
     "singularName": "category",
     "pluralName": "categories",
-    "displayName": "category",
-    "description": ""
+    "displayName": "category"
   },
   "options": {
     "draftAndPublish": true
@@ -22,8 +21,7 @@
       "type": "integer"
     },
     "status": {
-      "type": "string",
-      "default": "0"
+      "type": "string"
     }
   }
 }

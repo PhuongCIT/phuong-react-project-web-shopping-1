@@ -9,7 +9,8 @@
         "ignore": [
           "position: sticky",
           "user-select",
-          "scroll-margin"
+          "scroll-margin",
+          "scale"
         ]
       }
     ],
